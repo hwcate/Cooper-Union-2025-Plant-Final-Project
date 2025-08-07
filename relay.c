@@ -1,3 +1,4 @@
+#include "relay.h"
 void relay_init() {
     DDRB = DDRB|(1<<PORTB);
 }

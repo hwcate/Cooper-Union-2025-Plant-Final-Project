@@ -9,4 +9,6 @@
 void soil_state_HIGH();
 void soil_state_APPROACHING();
 void soil_state_LOW();
+int analogRead(uint8_t pin);
+void analogReference(uint8_t mode);
 DDRB = DDRB | (0<<9); 

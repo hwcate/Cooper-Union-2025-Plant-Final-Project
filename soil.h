@@ -5,6 +5,7 @@
 #include <avr/io.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <util/delay.h>
 
 // #define HIGH 1 
 // #define LOW 0

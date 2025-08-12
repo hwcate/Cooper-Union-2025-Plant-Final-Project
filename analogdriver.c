@@ -8,6 +8,7 @@ void adc_init(){
 }
 
 uint32_t adc_reading(uint8_t pin){
+    /*
     #if defined(analogPinToChannel)
 #if defined(__AVR_ATmega328P__)
 
@@ -16,13 +17,16 @@ uint32_t adc_reading(uint8_t pin){
 	if (pin >= 14) pin -= 14; // allow for channel or pin numbers
 #endif
 #endif
+
+    */
     DDRB = DDRB|(0<<PORTB);
     ADMUX |= (1<<ADLAR);
     ADMUX |= (ADMUX & 0xF0); 
     ADCSRA |= (1<<ADSC); 
 
-    if (ADCSRA|= (1<<ADSC) == true){
+    if (ADCSRA && (1<<ADSC) == true){
         return 1;
     }
+
     return ADC;
 }

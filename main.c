@@ -14,6 +14,8 @@
 int main(){
     relay_init();
     adc_init();
-    reading_value();
+    while(1) {
+        reading_value();
+    }
     adc_reading(8);
 }

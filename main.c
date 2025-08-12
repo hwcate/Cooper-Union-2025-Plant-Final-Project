@@ -17,4 +17,3 @@ int main(){
     reading_value();
     
 }
-

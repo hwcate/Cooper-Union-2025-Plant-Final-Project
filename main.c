@@ -7,12 +7,13 @@
 #include <stdbool.h>
 
 
-
+#include "analogdriver.h"
 #include "relay.h"
 #include "soil.h"
 
 int main(){
     relay_init();
+    adc_init();
     reading_value();
-    
+    adc_reading(8);
 }

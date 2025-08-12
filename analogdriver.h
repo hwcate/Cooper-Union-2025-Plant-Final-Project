@@ -7,4 +7,4 @@
 #include <stdbool.h>
 
 void adc_init();
-void adc_reading();
+uint32_t adc_reading(uint8_t pin);

@@ -5,10 +5,13 @@
 #include <avr/io.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+// #define HIGH 1 
+// #define LOW 0
+
 uint32_t humidity;
-void soil_state_HIGH();
-void soil_state_APPROACHING();
-void soil_state_LOW();
+// void soil_state_HIGH();
+// void soil_state_APPROACHING();
+// void soil_state_LOW();
 void reading_value();
-int analogRead(uint8_t pin);
-void analogReference(uint8_t mode);
+

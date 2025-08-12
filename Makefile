@@ -16,11 +16,10 @@ all: main.elf
 clean:
 	@rm -rvf *.d *.elf *.o
 
-main.elf: main.o relay.o soil.o
+main.elf: main.o relay.o soil.o analogdriver.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-%.o: %.c
+%.o: %.c %.h
 	$(CC) $(CFLAGS) -MM -MF $*.d $<
 	$(CC) $(CFLAGS) -c $<
-
-include $(wildcard *.d)
+ include $(wildcard *.d)

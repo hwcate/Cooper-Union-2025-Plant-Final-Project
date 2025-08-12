@@ -10,8 +10,8 @@ void adc_reading(){
     ADMUX |= (ADMUX & 0xF0); 
     ADCSRA |= (1<<ADSC); 
 
-    if (ADCSRA|= (1<<ADSC) = true){
-        return 1;
+    while  (ADCSRA|= (1<<ADSC)){
+        return 0;
     }
     return ADC;
 }

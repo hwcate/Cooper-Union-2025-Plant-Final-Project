@@ -4,13 +4,13 @@
 
 
 void reading_value(){
-    humidity = adc_reading(9);
+    humidity = adc_reading(0);
     if (humidity <300){
         //state = HIGH;
         printf("WET");
         _delay_ms(100);
     }
-    else if (humidity <600){
+    else if (humidity <450){
         //state = GOOD;
         printf("GOOD");
         _delay_ms(100);

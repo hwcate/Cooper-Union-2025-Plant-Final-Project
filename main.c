@@ -17,5 +17,5 @@ int main(){
     while(1) {
         reading_value();
     }
-    adc_reading(8);
+    adc_reading(0);
 }

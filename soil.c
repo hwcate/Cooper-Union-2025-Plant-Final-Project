@@ -1,63 +1,68 @@
 #include "soil.h"
 #include "analogdriver.h"
+#include "relay.h"
 
-
-
-void reading_value(){
+states_t reading_value(){
     humidity = adc_reading(0);
     if (humidity <300){
-        //state = HIGH;
         printf("WET");
         _delay_ms(100);
+        return HIGH;
+
     }
     else if (humidity <450){
-        //state = GOOD;
         printf("GOOD");
         _delay_ms(100);
+        return GOOD;
     }
     else {
-        //state = BAD;
         printf("DRY");
         _delay_ms(100);
+        return LOW;
     }
 }
 
 
-// void soil_state_LOW(){
-    
-// }
-// void soil_state_GOOD(){
 
-// }
+void soil_state_LOW(){
+    DDRD = DDRD|(1<<PORTD);
+    PORTD|= (1<<4);
+    PORTD &= ~(1<<3);
+    PORTD &= ~(1<<2);
+}
+void soil_state_GOOD(){
+    DDRD = DDRD|(1<<PORTD);
+    PORTD|= (1<<3);
+    PORTD &= ~(1<<4);
+    PORTD &= ~(1<<2);
+}
 
-// void soil_state_HIGH(){
+void soil_state_HIGH(){
+    DDRD = DDRD|(1<<PORTD);
+    PORTD|= (1<<2);
+    PORTD &= ~(1<<3);
+    PORTD &= ~(1<<4);
 
-// }
+}
 
-typedef enum{
-    LOW, 
-    GOOD, 
-    HIGH, 
-}states_t; 
+void soil_states(states_t state){
+    switch (state) {
+        case LOW: 
+            soil_state_LOW(); 
+            relay_start();
+            break;
+        case GOOD:
+            soil_state_GOOD(); 
+            relay_off();
+            break;
+        case HIGH:
+            soil_state_HIGH(); 
+            relay_off();
+            break;
+        default: 
+            soil_state_GOOD();
+            relay_off();
+            break;
+    }
 
-// void soil_states(static uint8_t state){
-//     switch (state){
-//         case LOW: 
-//         {
-//             state = soil_state_LOW(); 
-//             break;
-//         }
-//         case GOOD:
-//         {
-//             state = soil_state_GOOD(); 
-//         }
-//         case HIGH:
-//         {
-//             state = soil_state_HIGH(); 
-//         }
-//         default: 
-//         {
-//             state = soil_state_GOOD();
-//         }
-//     }
-// }
+}

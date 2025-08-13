@@ -1,3 +1,6 @@
+#ifndef SOIL_H
+#define SOIL_H
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
@@ -10,9 +13,18 @@
 // #define HIGH 1 
 // #define LOW 0
 
-uint32_t humidity;
-// void soil_state_HIGH();
-// void soil_state_APPROACHING();
-// void soil_state_LOW();
-void reading_value();
+typedef enum{
+    LOW, 
+    GOOD, 
+    HIGH, 
+}states_t;
 
+
+uint32_t humidity;
+void soil_state_HIGH();
+void soil_state_APPROACHING();
+void soil_state_LOW();
+states_t reading_value();
+void soil_states(states_t state);
+
+#endif

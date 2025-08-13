@@ -1,3 +1,6 @@
+#ifndef ANALOGDRIVER_H
+#define ANALOGDRIVER_H
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
@@ -8,3 +11,4 @@
 
 void adc_init();
 uint32_t adc_reading(uint8_t pin);
+#endif

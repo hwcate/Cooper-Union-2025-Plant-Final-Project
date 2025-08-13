@@ -12,10 +12,13 @@
 #include "soil.h"
 
 int main(){
+    states_t state = GOOD;
     relay_init();
     adc_init();
     while(1) {
-        reading_value();
+        state = reading_value();
+        soil_states(state);
     }
-    adc_reading(0);
+    
+    
 }

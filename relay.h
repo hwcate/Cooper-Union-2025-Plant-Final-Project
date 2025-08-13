@@ -1,3 +1,6 @@
+#ifndef RELAY_H
+#define RELAY_H
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
@@ -9,3 +12,5 @@
 void relay_init();
 void relay_start();
 void relay_off();
+
+#endif
